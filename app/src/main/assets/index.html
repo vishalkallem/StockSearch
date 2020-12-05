@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+        <script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+    </head>
+    <body>
+        <div id="charts-div" style="height:300px"></div>
+    </body>
+    <script type="text/javascript">
+        function createCharts(ticker) {
+            if (ticker) {
+                const xmlReq = new XMLHttpRequest();
+                xmlReq.overrideMimeType('application/json');
+                xmlReq.open('GET', "https://cors-anywhere.herokuapp.com/https://vk-stock-search.wl.r.appspot.com/api/charts/" + ticker, true);
+                xmlReq.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 404) {
+                        let errorElem = document.createElement('p');
+                        errorElem.id = 'error-message';
+                        errorElem.innerHTML = message;
+                        document.body.appendChild(errorElem);
+                    }
+                    if (this.readyState === 4 && this.status === 200) {
+                        createChartsData(JSON.parse(this.responseText), ticker);
+                    }
+                };
+                xmlReq.send();
+            }
+        }
+
+        function createChartsData(chartsData, ticker) {
+            let chartElem = document.getElementById('charts-div');
+
+            if (!chartsData.length) {
+                let emptyElem = document.createElement('p');
+                emptyElem.id = 'empty-error-message';
+                emptyElem.innerHTML = '<b>No Data Available</b>';
+                chartElem.appendChild(emptyElem);
+                return;
+            }
+
+            let ohlcData = [], volumeData = []
+
+            for (let info of chartsData) {
+                ohlcData.push([info[0], info[1], info[2], info[3], info[4]]);
+                volumeData.push([info[0], info[5]]);
+            }
+
+            Highcharts.stockChart('charts-div', {
+                rangeSelector: {
+                    selected: 2
+                },
+
+                yAxis: [{
+                    startOnTick: false,
+                    endOnTick: false,
+                    labels: {
+                        align: 'right',
+                        x: -3
+                    },
+                    title: {
+                        text: 'OHLC'
+                    },
+                    height: '60%',
+                    lineWidth: 2,
+                    resize: {
+                        enabled: true
+                    }
+                }, {
+                    labels: {
+                    align: 'right',
+                    x: -3
+                    },
+                    title: {
+                        text: 'Volume'
+                    },
+                    top: '65%',
+                    height: '35%',
+                    offset: 0,
+                    lineWidth: 2
+                }],
+
+                tooltip: {
+                    split: true
+                },
+
+                series: [{
+                    type: 'candlestick',
+                    name: ticker,
+                    id: ticker.toLowerCase(),
+                    zIndex: 2,
+                    data: ohlcData,
+                }, {
+                    type: 'column',
+                    name: 'Volume',
+                    id: 'volume',
+                    data: volumeData,
+                    yAxis: 1
+                }, {
+                    type: 'vbp',
+                    linkedTo: ticker.toLowerCase(),
+                    params: {
+                        volumeSeriesID: 'volume'
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    zoneLines: {
+                        enabled: false
+                    }
+                }, {
+                    type: 'sma',
+                    linkedTo: ticker.toLowerCase(),
+                    zIndex: 1,
+                    marker: {
+                        enabled: false
+                    }
+                }]
+            });
+        }
+    </script>
+</html>

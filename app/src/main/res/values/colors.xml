@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="splash">#EEEEF0</color>
+    <color name="progress_bar">#5C05DB</color>
+    <color name="green">#3F9360</color>
+    <color name="red">#9E4C53</color>
+    <color name="gray">#808080</color>
+    <color name="toolbarColor">#F4F2F5</color>
+    <color name="button">#329A5D</color>
+    <color name="newsBackground">#FCFCFC</color>
+    <color name="newsBorder">#E8E8E8</color>
+    <color name="header">#E2E3E5</color>
+    <color name="border">#CECDCE</color>
+    <color name="trending">#A56C72</color>
+    <color name="delete">#B60000</color>
+    <color name="bgColor">#777777</color>
+    <color name="trendingColor"/>
+    <color name="colorAccent"/>
+    <color name="sectionTabColor"/>
+    <color name="trendingSearch"/>
+</resources>

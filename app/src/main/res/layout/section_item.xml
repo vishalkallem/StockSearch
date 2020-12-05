@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sectionItemLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:onClick="goToDetails"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/tickerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/stockPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tickerTextView"
+        app:layout_constraintEnd_toStartOf="@+id/sideArrowImageView"
+        app:layout_constraintTop_toTopOf="@+id/tickerTextView" />
+
+    <TextView
+        android:id="@+id/companyNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/changeTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tickerTextView"
+        app:layout_constraintTop_toBottomOf="@+id/tickerTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/changeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/companyNameTextView"
+        app:layout_constraintEnd_toEndOf="@+id/stockPriceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/tickerTextView" />
+
+    <ImageView
+        android:id="@+id/trendingImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/contentDescription"
+        app:layout_constraintBottom_toBottomOf="@+id/companyNameTextView"
+        app:layout_constraintEnd_toStartOf="@+id/changeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/tickerTextView"
+        app:layout_constraintVertical_bias="0.941" />
+
+    <ImageView
+        android:id="@+id/sideArrowImageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/contentDescription"
+        app:layout_constraintBottom_toBottomOf="@+id/changeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/stockPriceTextView"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

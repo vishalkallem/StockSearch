@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Stocks</string>
+    <string name="pb_text">Fetching Data</string>
+    <string name="tb_search">search_icon</string>
+    <string name="favorite">Favorite</string>
+    <string name="about">About</string>
+    <string name="stats">Stats</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="trade">TRADE</string>
+    <string name="quantityHint">0</string>
+    <string name="shares">shares</string>
+    <string name="buy">BUY</string>
+    <string name="sell">SELL</string>
+    <string name="powered_by_tiingo">Powered by tiingo</string>
+    <string name="title_activity_dummy">DummyActivity</string>
+    <!--    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="news">News</string>
+    <string name="done">DONE</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="contentDescription">ContentDescription</string>
+    <string name="net_worth">Net Worth</string>
+</resources>
